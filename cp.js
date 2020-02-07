@@ -42,22 +42,6 @@
 				window.clipboardData.setData('Text', selectionText);
 				return(false);
 			}
-		} else {
-			var selectionObject = window.getSelection();
-			var selectionText = selectionObject.toString();
-			if(selectionText.length > cfg.length && !isCode(selectionText)) {
-				selectionText = replaceChars(selectionText);
-				if(cfg.link == 'true') {
-					selectionText+= "\n\n"+cfg.prefix+document.location.href+cfg.suffix;
-				}
-				var pre = document.createElement('pre');
-				document.getElementsByTagName('body')[0].appendChild(pre);
-				pre.textContent = selectionText;
-				selectionObject.selectAllChildren(pre);
-				window.setTimeout(function() {
-					document.getElementsByTagName('body')[0].removeChild(pre);
-				}, 0);
-			}
 		}
 	}
 
